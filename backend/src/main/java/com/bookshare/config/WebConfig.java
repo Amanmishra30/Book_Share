@@ -1,0 +1,26 @@
+package com.bookshare.config;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+/** Serves locally stored condition/cover photos from /uploads/**. */
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+    private final Path dir;
+
+    public WebConfig(@Value("${app.storage.local-dir}") String dir) {
+        this.dir = Paths.get(dir).toAbsolutePath().normalize();
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/uploads/**")
+                .addResourceLocations("file:" + dir + "/")
+                .setCachePeriod(3600);
+    }
+}

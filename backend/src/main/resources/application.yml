@@ -1,0 +1,41 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: bookshare
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/bookshare}
+    username: postgres
+    password: 2170
+  jpa:
+    
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  servlet:
+    multipart:
+      max-file-size: 8MB
+      max-request-size: 40MB
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-me-please-use-a-long-random-secret-of-at-least-32-bytes}
+    expiration-hours: 72
+  storage:
+    type: ${STORAGE_TYPE:local}          # local | cloudinary
+    local-dir: ${UPLOAD_DIR:./uploads}
+  cloudinary:
+    cloud-name: ${CLOUDINARY_CLOUD_NAME:}
+    api-key: ${CLOUDINARY_API_KEY:}
+    api-secret: ${CLOUDINARY_API_SECRET:}
+  admin:
+    email: ${ADMIN_EMAIL:admin@bookshare.local}
+    password: ${ADMIN_PASSWORD:Admin@12345}
+  seed-demo: ${SEED_DEMO:true}
+  trust:
+    grace-days: 5          # days after return_due_at before a "not returned" report is allowed
+    restriction-days: 14   # length of the temporary borrowing restriction (2nd valid report)
+  cors:
+    allowed-origins: ${CORS_ORIGINS:http://localhost:5173,http://localhost:3000,http://localhost}
