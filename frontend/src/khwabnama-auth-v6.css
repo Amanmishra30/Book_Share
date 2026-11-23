@@ -248,3 +248,123 @@
 @media (prefers-reduced-motion: reduce) {
   .kw-auth-firefly, .kw-auth-submit { animation: none; transition: none; }
 }
+
+/* Login and Register background image */
+
+.kw-auth-page {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(
+      rgba(15, 20, 16, 0.48),
+      rgba(15, 20, 16, 0.58)
+    ),
+    var(--login-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Keep the login card readable */
+.kw-auth-card {
+  position: relative;
+  background: rgba(255, 250, 235, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+}
+
+/* Make the story text visible over the image */
+.kw-auth-story {
+  color: #fff8e8;
+}
+
+.kw-auth-story h2,
+.kw-auth-story p,
+.kw-auth-story-overline,
+.kw-auth-story-signoff {
+  color: #fff8e8;
+}
+
+@media (max-width: 768px) {
+  .kw-auth-page {
+    background-attachment: scroll;
+  }
+}
+.kw-auth-page {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.kw-login-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.75;
+  z-index: -1;
+}
+
+.kw-auth-card {
+  background: rgba(255, 250, 235, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+/* FULL SCREEN LOGIN AND REGISTER BACKGROUND */
+
+.kw-auth-page {
+  position: relative !important;
+  width: 100vw !important;
+  max-width: none !important;
+  min-height: 100vh !important;
+  margin: 0 !important;
+  padding: 40px 5% !important;
+  box-sizing: border-box !important;
+
+  background-image:
+    linear-gradient(
+      rgba(12, 20, 14, 0.35),
+      rgba(12, 20, 14, 0.45)
+    ),
+    var(--login-bg) !important;
+
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important;
+}
+
+/* Make the authentication layout use the available width */
+
+.kw-auth-page > * {
+  box-sizing: border-box;
+}
+
+/* Keep the login card readable */
+
+.kw-auth-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 250, 235, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+}
+
+/* Remove unwanted horizontal scrolling */
+
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .kw-auth-page {
+    width: 100% !important;
+    padding: 24px 16px !important;
+    min-height: 100svh !important;
+  }
+}

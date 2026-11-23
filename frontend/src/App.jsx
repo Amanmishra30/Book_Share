@@ -2,7 +2,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import {   useAuth } from './authContext.jsx';
 import Layout from './components/Layout.jsx';
 import Home from './Home.jsx';
-import { Login, Register } from './pages/Auth.jsx';
+import { Login, Register } from './Auth.jsx';
 import Library from './pages/Library.jsx';
 import BookDetail from './pages/BookDetail.jsx';
 import AddBook from './pages/AddBook.jsx';

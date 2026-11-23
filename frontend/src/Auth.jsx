@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from './authContext.jsx';
+import loginBackground from './assets/login background.png';
 import { errMsg, get } from './api.js';
 import { useLoad } from './hooks.js';
 import { ErrorNote } from './components/ui.jsx';
 import './khwabnama-auth-v6.css';
 
 function AuthFrame({ eyebrow, title, intro, children, footer, storyTitle, storyCopy }) {
-  return <section className="kw-auth-page">
+  return  <section
+    className="kw-auth-page"
+    style={{ '--login-bg': `url(${loginBackground})` }}
+  >
+  
     <div className="kw-auth-atmosphere" aria-hidden="true">
       <span className="kw-auth-orb kw-auth-orb-one" />
       <span className="kw-auth-orb kw-auth-orb-two" />

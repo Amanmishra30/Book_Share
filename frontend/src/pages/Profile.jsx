@@ -6,6 +6,7 @@ import { useLoad } from '../hooks.js';
 import { useToast } from '../components/Toast.jsx';
 import { ErrorNote, Loading, Pill, Stars, TrustCard } from '../components/ui.jsx';
 import { fmtDate, label } from '../util.js';
+import profileBackground from '../assets/profile-background.png';
 
 const STATUS_HELP = {
   WARNED: 'You have 1 valid report. This is only a warning; nothing is restricted.',
@@ -34,7 +35,14 @@ export default function Profile() {
 
   return (
     <>
-      <div className="card pad-l stitched">
+      <div
+  className={`card pad-l stitched profile-hero ${mine ? 'profile-hero-own' : ''}`}
+  style={
+    mine
+      ? { '--profile-bg': `url("${profileBackground}")` }
+      : undefined
+  }
+>
         <div className="row" style={{ gap: '1.4rem' }}>
           <div className="avatar big">{d.user.name[0].toUpperCase()}</div>
           <div className="grow">
